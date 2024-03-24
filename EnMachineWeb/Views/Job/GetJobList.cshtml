@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "GetJobList";
+}
+
+@model List<EnMachineWeb.Models.GetJobList>
+
+<h2>Job List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Job Title</th>
+            <th>Assign Engineer Name</th>
+            <th>Phone Number</th>
+            <th>Job Status</th>
+            <th>Job Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var job in Model)
+        {
+            <tr>
+                <td>@job.JobId</td>
+                <td>@job.JobTitle</td>
+                <td>@job.AssignEngineerName</td>
+                <td>@job.PhoneNumber</td>
+                <td>@job.JobStatus</td>
+                <td>@job.JobCreated</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
