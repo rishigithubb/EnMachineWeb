@@ -9,16 +9,16 @@ namespace EnMachineWeb.Controllers
     {
         private readonly IJobRepository _jobRepository;
 
-        public JobController(IJobRepository jobRepository)
+        public JobController()
         {
-            _jobRepository = jobRepository;
+            _jobRepository = new JobRepository();
         }
 
-        public ActionResult Index()
+        public ActionResult GetJobList()
         {
             try
             {
-                var jobLists = _jobRepository.GetJobList();
+                var jobLists = _jobRepository.GetJobDetailList();
                 return View(jobLists);
             }
             catch (Exception ex)
