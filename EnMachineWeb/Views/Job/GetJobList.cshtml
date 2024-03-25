@@ -1,36 +1,56 @@
-﻿
-@{
-    ViewBag.Title = "GetJobList";
-}
+﻿@model List<EnMachineWeb.Models.GetJobList>
 
-@model List<EnMachineWeb.Models.GetJobList>
-
-<h2>Job List</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Job ID</th>
-            <th>Job Title</th>
-            <th>Assign Engineer Name</th>
-            <th>Phone Number</th>
-            <th>Job Status</th>
-            <th>Job Created</th>
-        </tr>
-    </thead>          
-    <tbody>
-        @foreach (var job in Model)
-        {
-            <tr>
-                <td>@job.JobId</td>
-                <td>@job.JobTitle</td>
-                <td>@job.AssignEngineerName</td>
-                <td>@job.PhoneNumber</td>
-                <td>@job.JobStatus</td>
-                <td>@job.JobCreated</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetJobList</title>
+    <link href="~/Content/view1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <span id="logo">LOGO</span>
+            <a class="user" href="#">User Profile</a>
+            <a class="user" href="#">Logout</a>
+        </div><br>
+        <div class="box3">
+            Phone Number
+            <input type="text">
+            <a id="job" href="#">Create Job</a>
+        </div><br><br><br><br><br>
+        <div class="box4">
+            <table style="width: 80%;">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Title</th>
+                        <th>Assign Engineer Name</th>
+                        <th>Phone Number</th>
+                        <th>Job Status</th>
+                        <th>Job Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var job in Model)
+                    {
+                        <tr>
+                            <td>@job.JobId</td>
+                            <td>@job.JobTitle</td>
+                            <td>@job.AssignEngineerName</td>
+                            <td>@job.PhoneNumber</td>
+                            <td>@job.JobStatus</td>
+                            <td>@job.JobCreated</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="box5">
+            <a class="button" href="#">Edit</a>
+            <a class="button" href="#">Delete</a>
+        </div>
+    </div>
+</body>
+</html>
