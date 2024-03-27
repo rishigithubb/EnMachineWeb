@@ -1,56 +1,123 @@
-﻿@model List<EnMachineWeb.Models.GetJobList>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GetJobList</title>
-    <link href="~/Content/view1.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .mobile{
+            font-size:20px;
+            font:bold;
+            margin-right:7px;
+        }
+        .btn-one{
+            margin-left:7px;
+            background-color:gray;
+            color:white;
+        }
+        .btn-one:hover{
+            background-color:gray;
+            color:black;
+        }
+        .bbox{
+            margin-left:25%;
+        }
+
+        .jjob {
+            font-size: 20px;
+            font: bold;
+            margin-right: 7px;
+        }
+        .btn-two{
+            margin-left:7px;
+            background-color:gray;
+        }
+        .btn-two:hover{
+            background-color:gray;
+            color:black;
+        }
+        .logout{
+            background-color:red;
+        }
+        .logout:hover{
+            background-color:red;
+            color:black;
+        }
+        .profile{
+            background-color:limegreen;
+        }
+        .profile:hover{
+            background-color:limegreen;
+            color:black;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="box1">
-        <div class="box2">
-            <span id="logo">LOGO</span>
-            <a class="user" href="#">User Profile</a>
-            <a class="user" href="#">Logout</a>
-        </div><br>
-        <div class="box3">
-            Phone Number
-            <input type="text">
-            <a id="job" href="#">Create Job</a>
-        </div><br><br><br><br><br>
-        <div class="box4">
-            <table style="width: 80%;">
-                <thead>
-                    <tr>
-                        <th>Job ID</th>
-                        <th>Job Title</th>
-                        <th>Assign Engineer Name</th>
-                        <th>Phone Number</th>
-                        <th>Job Status</th>
-                        <th>Job Created</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var job in Model)
-                    {
-                        <tr>
-                            <td>@job.JobId</td>
-                            <td>@job.JobTitle</td>
-                            <td>@job.AssignEngineerName</td>
-                            <td>@job.PhoneNumber</td>
-                            <td>@job.JobStatus</td>
-                            <td>@job.JobCreated</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div class="box5">
-            <a class="button" href="#">Edit</a>
-            <a class="button" href="#">Delete</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span id="logo"> <img src="~/images/CART.jpeg" height="70px" width="70px" /></span>
+                    <div>
+                        <a class="btn btn-primary mr-2 profile" href="#">User Profile</a>
+                        <a class="btn btn-primary logout" href="#">Logout</a>
+                    </div>
+                </div>
+                <br>
+                <div class="d-flex bbox">
+                    <label class="mobile">Phone Number</label>
+                    <input type="text" class="form-control" placeholder="Enter Phone Number">
+                    <a class="btn btn-primary btn-one" href="#">Create Job</a>
+                </div>
+                <br>
+                <div class="d-flex cbox">
+                    <Label class="jjob">Job ID</Label>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <a class="btn btn-primary btn-two" href="#"><i class="fas fa-search"></i></a>
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Job ID</th>
+                                <th>Job Title</th>
+                                <th>Assign Engineer Name</th>
+                                <th>Phone Number</th>
+                                <th>Job Status</th>
+                                <th>Job Created</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop through each job and create table rows -->
+                            @foreach (var job in Model)
+                            {
+                                <tr>
+                                    <td>@job.JobId</td>
+                                    <td>@job.JobTitle</td>
+                                    <td>@job.AssignEngineerName</td>
+                                    <td>@job.PhoneNumber</td>
+                                    <td>@job.JobStatus</td>
+                                    <td>@job.JobCreated</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="#"><small>Edit</small></a>
+                                        <a class="btn btn-danger" href="#"><small>Delete</small></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Bootstrap JS (optional, only if you need Bootstrap JavaScript functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS (optional, only if you need Font Awesome icons) -->
+    <script src="https://kit.fontawesome.com/26db657484.js" crossorigin="anonymous"></script>
 </body>
 </html>
