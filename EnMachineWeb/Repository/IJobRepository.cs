@@ -6,6 +6,6 @@ namespace EnMachineWeb.Controllers
     public interface IJobRepository
     {
         List<GetJobList> GetJobDetailList();
-        object GetJobList();
+         object GetJobList();
     }
 }

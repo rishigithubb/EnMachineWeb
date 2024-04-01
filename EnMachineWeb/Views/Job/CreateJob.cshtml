@@ -1,0 +1,155 @@
+﻿@model EnMachineWeb.Models.GetJobList
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .client form {
+            border: 2px solid black;
+            width: 50%;
+            height: fit-content;
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            background-image: url('../../images/bg createjob.jpg');
+        }
+        .fa-camera {
+            font-size: 25px;
+            margin-left: 10px;
+            margin-bottom: 15px;
+        }
+        .icontakephoto{
+            margin-right:154px;
+        }
+      
+    </style>
+    <script src="https://kit.fontawesome.com/26db657484.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="client">
+        <center><h5>CreateJob</h5></center>
+        <center>
+
+
+            <form class="a form p-3" onsubmit="return validateForm();">
+                <h4>job creation</h4>
+                <hr>
+                <div class="form-group d-flex">
+                    <label class="cform-label col-3" for="phoneNumber">
+                        Phone Number*
+                    </label>
+                    <input type="number" class="form-control" id="phoneNumber">
+
+                </div>
+                <div class="form-group d-flex ">
+                    <label class="col-3" class="col-3" for="name">Name *</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group d-flex">
+                    <label class="col-3" for="address">Address</label>
+                    <textarea class="form-control" id="address" cols="27" rows="2"></textarea>
+                </div>
+                <div class="form-group d-flex">
+                    <label class="col-3" for="email">Email</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group d-flex">
+                    <label class="col-3" for="companyName">Company Name</label>
+                    <input type="text" class="form-control" id="companyName">
+                </div>
+                <div class="form-group d-flex">
+                    <label class="col-3" for="jobTitle">Job Title *</label>
+                    <textarea class="form-control" id="jobTitle" cols="30" rows="4" required></textarea>
+                </div>
+                <div class="form-group d-flex">
+                    <label class="col-3" for="jobDescription">Job Description *</label>
+                    <textarea class="form-control" id="jobDescription" cols="30" rows="4" required></textarea>
+                </div>
+                <!-- Image Attachment -->
+                <div class="form-group d-flex">
+                    <label class="col-3" for="imageAttachment">Image Attachment</label>
+                    <button type="button" class="btn btn-primary" onclick="Upload()">upload</button>
+                    <input type="file"></input>
+                </div>
+                <div class="icontakephoto " >
+                    <button type="button" class="btn btn-primary" onclick="takePhoto()">Take Photo</button>
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <div class="form-group d-flex">
+                    <label class="col-3" for="assignEngineer">Assign Engineer</label>
+                    <textarea class="form-control" id="imageAttachment" cols="30" rows="1"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Create Job</button>
+                <button type="button" class="btn btn-danger">Cancel</button>
+</div>
+                
+            </form>
+
+        </center>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    function validateForm() {
+        var phoneNumber = document.getElementById("phoneNumber").value.trim();
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var jobTitle = document.getElementById("jobTitle").value.trim();
+        var jobDescription = document.getElementById("jobDescription").value.trim();
+
+        if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+            alert("Phone number must be a 10-digit number.");
+            return false;
+        }
+
+        // Validate name
+        if (name === "") {
+            alert("Name is required.");
+            return false;
+        }
+
+        // Validate email
+        if (!isValidEmail(email)) {
+            alert("Please enter a valid email address.");
+            return false;
+        }
+
+        // Validate job title
+        if (jobTitle === "") {
+            alert("Job Title is required.");
+            return false;
+        }
+
+        // Validate job description
+        if (jobDescription === "") {
+            alert("Job Description is required.");
+            return false;
+        }
+        var address = document.getElementById("address").value;
+
+        // Check if address is empty
+        if (address.trim() === "") {
+            // Display error message
+            alert("Address is required");
+            return false; // Prevent form submission
+        }
+
+        return true;
+    }
+
+
+    </script>
+ 
+</body>
+</html>

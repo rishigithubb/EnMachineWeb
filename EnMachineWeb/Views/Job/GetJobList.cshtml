@@ -6,51 +6,110 @@
     <title>GetJobList</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS (optional, only if you need Bootstrap JavaScript functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS (optional, only if you need Font Awesome icons) -->
+    <script src="https://kit.fontawesome.com/26db657484.js" crossorigin="anonymous"></script>
     <style>
-        .mobile{
-            font-size:20px;
-            font:bold;
-            margin-right:7px;
-        }
-        .btn-one{
-            margin-left:7px;
-            background-color:gray;
-            color:white;
-        }
-        .btn-one:hover{
-            background-color:gray;
-            color:black;
-        }
-        .bbox{
-            margin-left:25%;
-        }
-
-        .jjob {
+        .phone {
+            position: relative;
+            top: 5px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: 20px;
             font: bold;
             margin-right: 7px;
         }
-        .btn-two{
-            margin-left:7px;
-            background-color:gray;
+
+        .form-control {
+            width: 180px;
+            border-radius: 7px;
         }
-        .btn-two:hover{
-            background-color:gray;
-            color:black;
+
+        .btn-one {
+            margin-left: 7px;
+            background-color: gray;
+            color: white;
         }
-        .logout{
-            background-color:red;
+
+            .btn-one:hover {
+                background-color: gray;
+                color: black;
+            }
+
+        .phonebox {
+            position: relative;
+            bottom: 30px;
+            margin-left: 25%;
         }
-        .logout:hover{
-            background-color:red;
-            color:black;
+
+        .job-id {
+            font-size: 20px;
+            font: bold;
+            margin-right: 7px;
         }
-        .profile{
-            background-color:limegreen;
+
+        .search-bar {
+            position: relative;
+            bottom: 10px;
         }
-        .profile:hover{
-            background-color:limegreen;
-            color:black;
+
+        .btn-two {
+            margin-left: 7px;
+            background-color: gray;
+        }
+
+            .btn-two:hover {
+                background-color: gray;
+                color: black;
+            }
+
+        .dropbtn {
+            border-radius: 5px;
+            background-color: rgb(52,58,64);
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+
+            .dropbtn:hover {
+                color: black;
+            }
+
+        .dropdown {
+            position: relative;
+            left: 90%;
+            bottom: 138px;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: lightgrey;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: gray;
         }
     </style>
 </head>
@@ -59,65 +118,69 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="d-flex justify-content-between align-items-center">
+                <nav class="d-flex justify-content-between align-items-center">
                     <span id="logo"> <img src="~/images/CART.jpeg" height="70px" width="70px" /></span>
-                    <div>
-                        <a class="btn btn-primary mr-2 profile" href="#">User Profile</a>
-                        <a class="btn btn-primary logout" href="#">Logout</a>
-                    </div>
-                </div>
-                <br>
-                <div class="d-flex bbox">
-                    <label class="mobile">Phone Number</label>
-                    <input type="text" class="form-control" placeholder="Enter Phone Number">
-                    <a class="btn btn-primary btn-one" href="#">Create Job</a>
-                </div>
-                <br>
-                <div class="d-flex cbox">
-                    <Label class="jjob">Job ID</Label>
-                    <input type="text" class="form-control" placeholder="Search">
-                    <a class="btn btn-primary btn-two" href="#"><i class="fas fa-search"></i></a>
-                </div>
-                <br>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
+                </nav>
+                <nav class="dropdown">
+                    <button class="dropbtn"><i class="fa-regular fa-user"></i></button>
+                    <nav class="dropdown-content">
+                        <a href="#">User Profile</a>
+                        <a href="#">Logout</a>
+                    </nav>
+                </nav>
+            </div>
+            <br>
+            <div class="d-flex phonebox">
+                <label class="phone">Phone Number</label>
+                <input type="text" class="form-control" placeholder="Enter Phone Number">
+                <a class="btn btn-primary btn-one" href="@Url.Action("CreateJob", "Job")">Create Job</a>
+            </div>
+            <br>
+            <div class="d-flex search-bar">
+                <Label class="job-id">Job ID</Label>
+                <input type="text" class="form-control" placeholder="Search">
+                <a class="btn btn-primary btn-two" href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Job Title</th>
+                            <th>Assign Engineer Name</th>
+                            <th>Phone Number</th>
+                            <th>Job Status</th>
+                            <th>Job Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through each job and create table rows -->
+                        @foreach (var job in Model)
+                        {
                             <tr>
-                                <th>Job ID</th>
-                                <th>Job Title</th>
-                                <th>Assign Engineer Name</th>
-                                <th>Phone Number</th>
-                                <th>Job Status</th>
-                                <th>Job Created</th>
-                                <th>Action</th>
+                                <td>@job.JobId</td>
+                                <td>@job.JobTitle</td>
+                                <td>@job.AssignEngineerName</td>
+                                <td>@job.PhoneNumber</td>
+                                <td>@job.JobStatus</td>
+                                <td>@job.JobCreated</td>
+                                <td>
+                                    <a class="btn btn-primary" href="#"><small> <i class="fa-solid fa-pen-to-square"></i>
+</small></a>
+                                    <a class="btn btn-danger" href="#"><small><i class="fa-solid fa-trash"></i></small></a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Loop through each job and create table rows -->
-                            @foreach (var job in Model)
-                            {
-                                <tr>
-                                    <td>@job.JobId</td>
-                                    <td>@job.JobTitle</td>
-                                    <td>@job.AssignEngineerName</td>
-                                    <td>@job.PhoneNumber</td>
-                                    <td>@job.JobStatus</td>
-                                    <td>@job.JobCreated</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="#"><small>Edit</small></a>
-                                        <a class="btn btn-danger" href="#"><small>Delete</small></a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                        }
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS (optional, only if you need Bootstrap JavaScript functionality) -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Font Awesome JS (optional, only if you need Font Awesome icons) -->
-    <script src="https://kit.fontawesome.com/26db657484.js" crossorigin="anonymous"></script>
+    </div>
+
 </body>
 </html>
+

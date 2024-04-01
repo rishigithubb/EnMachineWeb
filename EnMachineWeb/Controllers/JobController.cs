@@ -27,5 +27,9 @@ namespace EnMachineWeb.Controllers
                 return View("Error");
             }
         }
+        public ActionResult CreateJob()
+        {
+            return View();
+        }
     }
 }

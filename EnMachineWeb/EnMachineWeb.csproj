@@ -145,7 +145,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ApiControllerAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Repository\IJobRepository.cs" />
     <Compile Include="Controllers\JobController.cs" />
@@ -179,6 +178,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\bg createjob.jpg" />
     <Content Include="images\CART.jpeg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -212,6 +212,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Job\GetJobList.cshtml" />
+    <Content Include="Views\Job\CreateJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

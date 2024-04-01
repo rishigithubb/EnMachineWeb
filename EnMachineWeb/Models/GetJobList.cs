@@ -5,7 +5,7 @@ namespace EnMachineWeb.Models
 {
     public class GetJobList
     {
-        public int JobId { get; set; }
+        public long JobId { get; set; }
         public string JobTitle { get; set; }
         public string AssignEngineerName { get; set; }
         public string PhoneNumber { get; set; }
